@@ -16,6 +16,8 @@ class CardPage extends StatelessWidget {
 
   Widget _cardTipo1() {
     return Card(
+      elevation: 10.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Column(
         children: <Widget>[
           ListTile(
@@ -47,7 +49,7 @@ class CardPage extends StatelessWidget {
   }
 
   Widget _cardTipo2() {
-    return Card(
+    final card = Container(
       child: Column(children: <Widget>[
         FadeInImage(
           placeholder: AssetImage('assets/jar-loading.gif'),
@@ -57,15 +59,35 @@ class CardPage extends StatelessWidget {
           height: 300.0,
           fit: BoxFit.cover,
         ),
-        // Image(
-        //   image: NetworkImage(
-        //       'https://www.schultzphoto.com/wp-content/uploads/2016/01/alaska-landscape-photography-001-northern-lights-reflection.jpg'),
-        // ),
         Container(
-          child: Text('Something'),
+          child: Text(
+            'Paisaje',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          padding: EdgeInsets.all(10.0),
+        ),
+        Container(
+          child: Text('una playa estrellada'),
           padding: EdgeInsets.all(10.0),
         )
       ]),
+    );
+
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30.0),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: Colors.black26,
+                blurRadius: 10.0,
+                spreadRadius: 2.0,
+                offset: Offset(2.0, -4.0))
+          ]),
+      child: ClipRRect(
+        child: card,
+        borderRadius: BorderRadius.circular(30.0),
+      ),
     );
   }
 }
