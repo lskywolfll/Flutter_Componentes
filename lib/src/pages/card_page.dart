@@ -9,7 +9,7 @@ class CardPage extends StatelessWidget {
       ),
       body: ListView(
         padding: EdgeInsets.all(20.0),
-        children: <Widget>[_cardTipo1()],
+        children: <Widget>[_cardTipo1(), SizedBox(height: 30.0), _cardTipo2()],
       ),
     );
   }
@@ -29,7 +29,7 @@ class CardPage extends StatelessWidget {
                 'Aqui estamos en la descripcion de la tarjeta para que ustedes vean para que se hagan una idea para poder mostrarles'),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               FlatButton(
                 child: Text('Cancelar'),
@@ -43,6 +43,29 @@ class CardPage extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  Widget _cardTipo2() {
+    return Card(
+      child: Column(children: <Widget>[
+        FadeInImage(
+          placeholder: AssetImage('assets/jar-loading.gif'),
+          image: NetworkImage(
+              'https://www.schultzphoto.com/wp-content/uploads/2016/01/alaska-landscape-photography-001-northern-lights-reflection.jpg'),
+          fadeInDuration: Duration(milliseconds: 200),
+          height: 300.0,
+          fit: BoxFit.cover,
+        ),
+        // Image(
+        //   image: NetworkImage(
+        //       'https://www.schultzphoto.com/wp-content/uploads/2016/01/alaska-landscape-photography-001-northern-lights-reflection.jpg'),
+        // ),
+        Container(
+          child: Text('Something'),
+          padding: EdgeInsets.all(10.0),
+        )
+      ]),
     );
   }
 }
