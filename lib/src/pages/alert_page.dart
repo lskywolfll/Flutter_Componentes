@@ -38,7 +38,7 @@ class AlertPage extends StatelessWidget {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text('Este es el contenod de la caja de la alerta'),
+                Text('Este es el contenido de la caja de la alerta'),
                 Divider(color: Colors.black),
                 Text('Este es otro'),
                 FlutterLogo(
