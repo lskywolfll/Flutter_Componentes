@@ -10,6 +10,9 @@ class _InputPageState extends State<InputPage> {
   String _nombre = ' ';
   String _email = ' ';
   String _password = ' ';
+  String _fecha = " ";
+
+  TextEditingController _inputFieldDateController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +29,47 @@ class _InputPageState extends State<InputPage> {
           Divider(),
           _crearPassword(),
           Divider(),
+          _crearFecha(context),
+          Divider(),
           _crearPersona(),
         ],
       ),
     );
+  }
+
+  Widget _crearFecha(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(
+          hintText: 'Fecha',
+          labelText: 'Fecha',
+          suffixIcon: Icon(Icons.calendar_today),
+          icon: Icon(Icons.date_range),
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(20.0))),
+      cursorColor: Colors.pink,
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+        _selectDate(context);
+      },
+      controller: _inputFieldDateController,
+      enableInteractiveSelection: false,
+      keyboardType: TextInputType.datetime,
+    );
+  }
+
+  void _selectDate(BuildContext context) async {
+    DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: new DateTime.now(),
+        firstDate: new DateTime(2019),
+        lastDate: new DateTime(2025));
+
+    if (picked != null) {
+      setState(() {
+        _fecha = picked.toString();
+        _inputFieldDateController.text = _fecha;
+      });
+    }
   }
 
   Widget _crearPassword() {
@@ -39,7 +79,6 @@ class _InputPageState extends State<InputPage> {
       decoration: InputDecoration(
           hintText: 'Contraseña',
           labelText: 'Contraseña',
-          helperText: 'Contraseña',
           suffixIcon: Icon(Icons.lock_open),
           icon: Icon(Icons.lock),
           border:
