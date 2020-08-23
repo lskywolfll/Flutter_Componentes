@@ -61,8 +61,9 @@ class _InputPageState extends State<InputPage> {
     DateTime picked = await showDatePicker(
         context: context,
         initialDate: new DateTime.now(),
-        firstDate: new DateTime(2019),
-        lastDate: new DateTime(2025));
+        firstDate: new DateTime(1999),
+        lastDate: new DateTime(new DateTime.now().year + 1),
+        locale: Locale('es', 'ES'));
 
     if (picked != null) {
       setState(() {
@@ -74,6 +75,7 @@ class _InputPageState extends State<InputPage> {
 
   Widget _crearPassword() {
     return TextField(
+      enableInteractiveSelection: false,
       autocorrect: true,
       // autofocus: true,
       decoration: InputDecoration(
