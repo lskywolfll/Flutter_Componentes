@@ -14,10 +14,13 @@ class _ListaPageState extends State<ListaPage> {
   @override
   void initState() {
     super.initState();
-    _agregar5();
+    _agregarImagenes(5);
 
     _scrollController.addListener(() {
-      print('scroll!!');
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        _agregarImagenes(10);
+      }
     });
   }
 
@@ -47,8 +50,8 @@ class _ListaPageState extends State<ListaPage> {
     );
   }
 
-  void _agregar5() {
-    for (var i = 1; i < 10; i++) {
+  void _agregarImagenes(cantidad) {
+    for (var i = 1; i < cantidad; i++) {
       _ultimoItem++;
       _listaNumeros.add(_ultimoItem);
     }
